@@ -7,15 +7,14 @@ class TreeNode(object):
 
 class Solution(object):
 
-	results = list(list())
 
 	def pathSum(self, root, sum):
-		
-		self.treeSum(root, [], 0, sum)
-		print(self.results)
-		return self.results
+		results = []
+		self.treeSum(root, [], 0, sum, results)
+		print(results)
+		return results
 
-	def treeSum(self, root, items, tmpSum, targetSum):
+	def treeSum(self, root, items, tmpSum, targetSum, results):
 			if root == None:
 				return
 			else:
@@ -25,16 +24,16 @@ class Solution(object):
 				if root.left == None and root.right == None:
 					# print("end")
 					if tmpSum == targetSum:
-						self.results.append(list(items))
+						results.append(list(items))
 					return
 
 				
 
 				if root.left != None:
-					self.treeSum(root.left, items, tmpSum, targetSum)
+					self.treeSum(root.left, items, tmpSum, targetSum, results)
 					
 				if root.right != None:
-					self.treeSum(root.right, items, tmpSum, targetSum)
+					self.treeSum(root.right, items, tmpSum, targetSum, results)
 					
 
 				# items.pop()

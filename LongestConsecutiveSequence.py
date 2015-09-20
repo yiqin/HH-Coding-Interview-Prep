@@ -1,6 +1,6 @@
 class Solution(object):
 	def longestConsecutive(self, nums):
-		print(nums)
+		# print(nums)
 		hashSet = set()
 		for i in range(len(nums)):
 			hashSet.add(nums[i])
