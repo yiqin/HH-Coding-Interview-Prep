@@ -9,7 +9,7 @@ class Solution(object):
 		while starting <= ending:
 
 			mid = (ending+starting)/2
-			print(starting, mid, ending)
+			# print(starting, mid, ending)
 
 			# luck
 			if nums[mid] == target:
@@ -19,12 +19,8 @@ class Solution(object):
 			elif nums[mid] > target:
 				ending = mid - 1
 
-		print(mid)
+		# print(mid)
 		return starting
-
-
-
-
 
 
 nums = [1, 3, 5, 6]
