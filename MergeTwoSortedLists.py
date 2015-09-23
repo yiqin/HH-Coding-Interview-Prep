@@ -52,7 +52,7 @@ class Solution(object):
 				newHead = newHead.next
 				l2 = l2.next
 
-		print(head.next.val)
+		# print(head.next.val)
 		return head
 
 
