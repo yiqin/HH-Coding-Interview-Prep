@@ -4,18 +4,44 @@ class Solution(object):
 		n = len(s)
 
 		stack = list()
+		totalSum = 0
+		i = 0
 
-		for i in range(n):
-			c = s[n-1-i]
+		isInStack = False
 
+		while i < n:
+			c = s[i]
 			if c == ' ':
 				pass
-			elif: c = '(':
+			elif c == '(':
+				isInStack = True
 				stack.append(c)
-			elif: c = ')':
+			elif c == ')':
 				tmp = 0
-				while()
+				while True:	
+					print(stack)			
+					num = int(stack[len(stack)-1])
+					del stack[len(stack)-1]
+					operator = stack[len(stack)-1]
+					del stack[len(stack)-1]
+					
+					if operator == "-":
+						num = -num
+					elif operator == "(":
+						break
+					tmp += num
+
+				totalSum += tmp
+			elif isInStack:
+				stack.append(c)
+			
+
+			i += 1
+
+		print(stack)
+				
 
 
 solution = Solution()
-solution.calculate("1 + 1")
+result = solution.calculate("(1+(4+5+2 )-3)+ (6+ 8) ")
+# 23
