@@ -1,47 +1,50 @@
-class Solution(object):
-	"""docstring for Solution"""
-	def calculate(self, s):
-		n = len(s)
+class Solution:
+    # @param {string} s
+    # @return {integer}
+    def calculate(self, s):
+    	stack = list()
+    	num = 0
+    	sign = 1
+    	result = 0
 
-		stack = list()
-		totalSum = 0
-		i = 0
+    	for i in range(len(s)):
+    		c = s[i]
+    		if c >= '0' and c <= '9':
+    			num = num * 10 + int(c)
+    		elif c == '+':
+    			result = result + sign * num
+    			sign = 1
+    			num = 0
+    		elif c == '-':
+    			result = result + sign * num
+    			sign = -1
+    			num =0
+    		elif c == '(':
+    			stack.append(result)
+    			stack.append(sign)
+    			sign = 1
+    			result = 0
+    		elif c == ')':
+				result = result + sign * num
+				sign = stack.pop()
+				result = sign*result + stack.pop()
+				num = 0
 
-		isInStack = False
+    	if num != 0:
+    		result = result + sign * num
 
-		while i < n:
-			c = s[i]
-			if c == ' ':
-				pass
-			elif c == '(':
-				isInStack = True
-				stack.append(c)
-			elif c == ')':
-				tmp = 0
-				while True:	
-					print(stack)			
-					num = int(stack[len(stack)-1])
-					del stack[len(stack)-1]
-					operator = stack[len(stack)-1]
-					del stack[len(stack)-1]
-					
-					if operator == "-":
-						num = -num
-					elif operator == "(":
-						break
-					tmp += num
 
-				totalSum += tmp
-			elif isInStack:
-				stack.append(c)
-			
+    	return result
 
-			i += 1
 
-		print(stack)
+
+
+
 				
 
 
 solution = Solution()
+# "(1+(4+5+2 )-3)+ (6+ 8) "
 result = solution.calculate("(1+(4+5+2 )-3)+ (6+ 8) ")
+print(result)
 # 23
